@@ -1,0 +1,17 @@
+#!/usr/bin/bash
+
+$macro_name $1
+$ip_addr = $2
+$username = $3
+$password = $4
+$ssh_arguments = $5
+
+# only checks for required information, eg. ip, user, + password
+if [ -z $macro_name && -z $username && -z $password && -z $ip_addr ] then
+    sudo echo "ssh $ip_addr -l $username -P $password $ssh_arguments" >> /tmp/$macro_name > /dev/null2>&1
+    sudo cp /tmp/$macro_name /usr/local/bin/$macro_name > /dev/null2>&1
+    echo "alias $macro_name='sh /usr/local/bin/$macro_name'" > /dev/null2>&1
+    echo "Created alias $macro_name"
+else
+    echo "usage: rcm [macro_name] [ip] [username] [password] [<ssh-arguments>]"
+fi

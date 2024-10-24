@@ -1,0 +1,18 @@
+RCM (Remote Connection Macro)
+=======================================
+rcm will manage SSH credientals and automatically run SSH with your credientals
+under a macro name.
+
+Here's how to create a macro:
+        rcm my_macro_name ip username password
+
+After macro is created, restart your terminal and run the name of your macro.
+        my_macro_name
+
+You will be connected to your SSH after.
+
+Optional stuff
+======================================
+        rcm my_macro_name ip username password [ssh-arguments]
+
+You can specify your own SSH argument in [ssh-arguments]. It is optional.

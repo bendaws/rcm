@@ -8,6 +8,9 @@ $ssh_arguments = $5
 
 # only checks for required information, eg. ip, user, + password
 if [ -z $macro_name && -z $username && -z $password && -z $ip_addr ] then
+    echo "Requesting admin permissions (which may ask for your password)"
+    sudo whoami
+
     sudo echo "ssh $ip_addr -l $username -P $password $ssh_arguments" >> /tmp/$macro_name > /dev/null2>&1
     sudo cp /tmp/$macro_name /usr/local/bin/$macro_name > /dev/null2>&1
     echo "alias $macro_name='sh /usr/local/bin/$macro_name'" > /dev/null2>&1
